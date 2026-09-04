@@ -1,0 +1,92 @@
+fileFormatVersion: 2
+guid: 15ecb9066bdb3344a90d6e37916677db
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\Unity2Skfb.bin
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\Unity2Skfb.bin
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42900_BodyNormal.jpg
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42900_BodyNormal.jpg
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\16136_BodyAlbedo.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\16136_BodyAlbedo.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42904_BodyMetallicSmoothness.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42904_BodyMetallicSmoothness.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42908_MainNormal.jpg
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42908_MainNormal.jpg
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\15978_MainAlbedo.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\15978_MainAlbedo.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42912_MainMetallicSmoothness.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42912_MainMetallicSmoothness.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\16368_BrakeDiscGlow.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\16368_BrakeDiscGlow.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42916_NumberEUN.jpg
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42916_NumberEUN.jpg
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\15946_NumberUEA.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\15946_NumberUEA.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42918_PaintNormal.jpg
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42918_PaintNormal.jpg
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\16344_PaintAo.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\16344_PaintAo.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42920_LicensePlateEuNormal.jpg
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42920_LicensePlateEuNormal.jpg
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\16216_LicensePlateEuAlbedo.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\16216_LicensePlateEuAlbedo.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42924_LicensePlateEuMetallicSmoothness.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42924_LicensePlateEuMetallicSmoothness.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42928_Tire01Normal.jpg
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42928_Tire01Normal.jpg
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\16302_Tire01Albedo.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\16302_Tire01Albedo.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42932_Tire01MetallicSmoothness.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42932_Tire01MetallicSmoothness.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\15930_WindowMetalness.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\15930_WindowMetalness.png
+  - type: 1
+    originalUri: Assets\Model\car-for-games-unity\source\Unity2Skfb\42938_WindowMetalness.png
+    assetPath: Assets\Model\car-for-games-unity\source\Unity2Skfb\42938_WindowMetalness.png
+  reportItems:
+  - type: 2
+    code: 20
+    messages:
+    - EXT_texture_transform

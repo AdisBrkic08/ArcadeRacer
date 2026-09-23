@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+
+    private void Update()
+    {
+        
+    }
     public void LookAtTarget()
     {
         Vector3 _lookDirection = objectToFollow.position - transform.position;

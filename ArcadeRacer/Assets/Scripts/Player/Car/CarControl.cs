@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CarControl : MonoBehaviour
@@ -8,9 +10,7 @@ public class CarControl : MonoBehaviour
     [Header("Drift")]
     public float driftSteerAngle = 45f;
     public float driftGrip = 0.30f;
-    public float normalGrip = 1f;
-
-    public float driftTorqueMultiplier = 1.2f;
+   
 
     private bool drifting;
     private int direction;
@@ -43,7 +43,6 @@ public class CarControl : MonoBehaviour
         WheelCollider_FR.steerAngle = m_steeringAngle;
     }
 
-    // Used specifically while drifting
     public void Steer(int direction, float amount)
     {
         m_steeringAngle = (driftSteerAngle * direction) * amount;
@@ -58,7 +57,7 @@ public class CarControl : MonoBehaviour
 
         if (drifting)
         {
-            torque *= driftTorqueMultiplier;
+          
         }
 
         WheelCollider_RL.motorTorque = torque;
@@ -78,7 +77,6 @@ public class CarControl : MonoBehaviour
 
     private void Drift()
     {
-        // Start drift
         if (Input.GetButtonDown("Jump") &&
             !drifting &&
             Mathf.Abs(m_horizontalInput) > 0.1f &&
@@ -91,7 +89,6 @@ public class CarControl : MonoBehaviour
             SetRearWheelGrip(driftGrip);
         }
 
-        // While drifting
         if (drifting)
         {
             float amount;
@@ -99,6 +96,7 @@ public class CarControl : MonoBehaviour
             if (direction == 1)
             {
                 amount = Mathf.InverseLerp(-1f, 1f, m_horizontalInput) * 2f;
+               
             }
             else
             {
@@ -118,7 +116,6 @@ public class CarControl : MonoBehaviour
             );
         }
 
-        // Release drift
         if (Input.GetButtonUp("Jump") && drifting)
         {
             drifting = false;
@@ -168,6 +165,7 @@ public class CarControl : MonoBehaviour
     private float m_verticalInput;
     private float m_steeringAngle;
 
+    float normalGrip = 1f;
     private Rigidbody rb;
 
     public WheelCollider WheelCollider_FL;

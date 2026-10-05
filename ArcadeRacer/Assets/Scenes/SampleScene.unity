@@ -168,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: db4447970ae52e44e99fce1e695e0be6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1161,10 +1161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed902ded33659e4f85de307781ad70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarControl
-  driftSteerAngle: 55
+  driftSteerAngle: 45
   driftGrip: 0
-  normalGrip: 1
-  driftTorqueMultiplier: 1.2
   WheelCollider_FL: {fileID: 1245152427}
   WheelCollider_FR: {fileID: 288279852}
   WheelCollider_RL: {fileID: 1508928594}
@@ -1173,8 +1171,8 @@ MonoBehaviour:
   WheelFrontRight: {fileID: 253036720}
   WheelRearLeft: {fileID: 1798719696}
   WheelRearRight: {fileID: 116544306}
-  maxSteerAngle: 40
-  motorForce: 1000
+  maxSteerAngle: 30
+  motorForce: 2000
 --- !u!54 &2115123383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1200,7 +1198,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!4 &2115123384 stripped
 Transform:

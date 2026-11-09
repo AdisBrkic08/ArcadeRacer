@@ -2,24 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CarControl : MonoBehaviour
 {
     [Header("Drift")]
-    public float driftSteerAngle = 45f;
+    public float driftSteerAngle = 35f;
     public float driftGrip = 0.30f;
-   
 
     private bool drifting;
     private int direction;
 
+    [Range(0, 1)][SerializeField] private float m_TractionControl;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         SetRearWheelGrip(normalGrip);
+    }
+
+    private void Update()
+    {
+        GetInput();
+        UpdateWheelPoses();
+
+        if (Input.GetButtonDown("Jump") &&
+            !drifting &&
+            Mathf.Abs(m_horizontalInput) > 0.1f &&
+            rb.linearVelocity.magnitude > 3f)
+        {
+            drifting = true;
+            direction = m_horizontalInput > 0 ? 1 : -1;
+            SetRearWheelGrip(driftGrip);
+        }
+
+        if (Input.GetButtonUp("Jump") && drifting)
+        {
+            drifting = false;
+            SetRearWheelGrip(normalGrip);
+
+            Vector3 localAng = transform.InverseTransformDirection(rb.angularVelocity);
+            localAng.y *= 0.2f;
+            rb.angularVelocity = transform.TransformDirection(localAng);
+        }
     }
 
     public void GetInput()
@@ -55,11 +80,6 @@ public class CarControl : MonoBehaviour
     {
         float torque = m_verticalInput * motorForce;
 
-        if (drifting)
-        {
-          
-        }
-
         WheelCollider_RL.motorTorque = torque;
         WheelCollider_RR.motorTorque = torque;
 
@@ -77,60 +97,28 @@ public class CarControl : MonoBehaviour
 
     private void Drift()
     {
-        if (Input.GetButtonDown("Jump") &&
-            !drifting &&
-            Mathf.Abs(m_horizontalInput) > 0.1f &&
-            rb.linearVelocity.magnitude > 3f)
-        {
-            drifting = true;
-
-            direction = m_horizontalInput > 0 ? 1 : -1;
-
-            SetRearWheelGrip(driftGrip);
-        }
-
         if (drifting)
         {
-            float amount;
-
-            if (direction == 1)
-            {
-                amount = Mathf.InverseLerp(-1f, 1f, m_horizontalInput) * 2f;
-               
-            }
-            else
-            {
-                amount = Mathf.InverseLerp(-1f, 1f, m_horizontalInput);
-
-                amount = (1f - amount) * 2f;
-            }
+            float amount = (direction == 1)
+                ? Mathf.Lerp(0.5f, 1f, Mathf.InverseLerp(-1f, 1f, m_horizontalInput))
+                : Mathf.Lerp(0.5f, 1f, Mathf.InverseLerp(1f, -1f, m_horizontalInput));
 
             Steer(direction, amount);
 
-            rb.AddTorque(
-                Vector3.up *
-                direction *
-                Mathf.Abs(m_horizontalInput) *
-                300f,
-                ForceMode.Force
-            );
+            rb.AddTorque(Vector3.up * direction * Mathf.Abs(m_horizontalInput) * 100f, ForceMode.Force);
         }
-
-        if (Input.GetButtonUp("Jump") && drifting)
+        else
         {
-            drifting = false;
-
-            SetRearWheelGrip(normalGrip);
+            Vector3 localAng = transform.InverseTransformDirection(rb.angularVelocity);
+            localAng.y = Mathf.Clamp(localAng.y, -2f, 2f);
+            rb.angularVelocity = transform.TransformDirection(localAng);
         }
     }
 
     private void SetRearWheelGrip(float stiffness)
     {
-        WheelFrictionCurve leftFriction =
-            WheelCollider_RL.sidewaysFriction;
-
-        WheelFrictionCurve rightFriction =
-            WheelCollider_RR.sidewaysFriction;
+        WheelFrictionCurve leftFriction = WheelCollider_RL.sidewaysFriction;
+        WheelFrictionCurve rightFriction = WheelCollider_RR.sidewaysFriction;
 
         leftFriction.stiffness = stiffness;
         rightFriction.stiffness = stiffness;
@@ -139,12 +127,10 @@ public class CarControl : MonoBehaviour
         WheelCollider_RR.sidewaysFriction = rightFriction;
     }
 
-    private void UpdateWheelPose(
-        WheelCollider _collider,
-        Transform _transform)
+    private void UpdateWheelPose(WheelCollider _collider, Transform _transform)
     {
-        Vector3 _pos = _transform.position;
-        Quaternion _quat = _transform.rotation;
+        Vector3 _pos;
+        Quaternion _quat;
 
         _collider.GetWorldPose(out _pos, out _quat);
 
@@ -154,10 +140,8 @@ public class CarControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetInput();
         Steer();
         Accelerate();
-        UpdateWheelPoses();
         Drift();
     }
 
@@ -178,6 +162,6 @@ public class CarControl : MonoBehaviour
     public Transform WheelRearLeft;
     public Transform WheelRearRight;
 
-    public float maxSteerAngle = 35f;
-    public float motorForce = 1000f;
+    public float maxSteerAngle = 15f;
+    public float motorForce = 750f;
 }
